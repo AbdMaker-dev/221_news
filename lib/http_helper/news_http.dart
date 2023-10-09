@@ -10,9 +10,9 @@ class NewsHttp {
     List<NewsModel> list = [];
     var response = await _dio.get('$baseUrl/news');
     if (response.statusCode == 200) {
-        for (var element in response.data) {
-          list.add(NewsModel.fromJson(element));
-        }
+      for (var element in response.data) {
+        list.add(NewsModel.fromJson(element));
+      }
     }
     return list;
   }

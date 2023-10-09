@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/http_helper/news_http.dart';
 import 'package:news/models/news.dart';
+import 'package:news/widgtes/item_news.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,9 +27,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
-        child: Column(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: news.length,
+            itemBuilder: (BuildContext context, int index) { 
+              return ItemNews(newsModel: news[index]);
+            }
+          ),
+        )
       ),
     );
   }
